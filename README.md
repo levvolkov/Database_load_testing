@@ -2,7 +2,7 @@
 
 [Задание.](https://github.com/netology-code/loadqa-homeworks/blob/main/4.Load%20db/homework_lecture4.md)
 
-### Сделано:
+
 
 ## Cреда нагрузочного тестирования:
   * Установлен [Docker](https://github.com/netology-code/aqa-homeworks/blob/master/docker/installation.md).
@@ -40,7 +40,7 @@
   * В браузере по адресу `localhost:80` указанном в `docker-compose.uml` запущен сайт WordPress.
     * Выбран язык.
     * Заполнены все поля: название сайта, имя пользователя, email, придуман пароль, ☑️. 
-    * При добавлении комментария на странице по адресу `http://localhost/привет-мир`, я убедился, что комментарий был добавлен успешно.
+    * На странице добавления комментария, я убедился, что комментарий успешно добавляется.
 
 #### 2.Подключение к базе данных WordPress
   * Подключение к базе данных [MariaDB](https://mariadb.com/kb/ru/a-mariadb-primer/) было успешно выполнено с использованием DBeaver, который используется для работы с системой управления базами данных (СУБД).
@@ -53,7 +53,7 @@
 
 #### 3. Установка [хранимой процедуры](https://ru.wikipedia.org/wiki/%D0%A5%D1%80%D0%B0%D0%BD%D0%B8%D0%BC%D0%B0%D1%8F_%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%B4%D1%83%D1%80%D0%B0) базы данных WordPress
   * Произведена проверка доступа к комментарию: Базы данных => wpdb => Таблицы => wp_comments
-  * Скопирован файл с хранимой процедурой [`scripts.sql`](scripts.sql) и перенесен в DBeaver. В `меню` выбрано `Редактор SQL` и создан новый редактор, где был вставлен скопированный код.
+  * Скопирован файл с хранимой процедурой [`scripts.sql`](jmeter-tests/scripts.sql) и перенесен в DBeaver. В `меню` выбрано `Редактор SQL` и создан новый редактор, где был вставлен скопированный код.
     * ▶️ Выделен код и вызвана команда на удаление хранимой процедуры `drop procedure if exists dorepeat_v1;`, так как в процедуре были внесены изменения — комментарий `comment` был изменен на `дождь`.
     * ▶️ Затем выделен весь код, относящийся к хранимой процедуре `dorepeat_v1`, который заканчивается ключевым словом `END`, и была вызвана команда для создания процедуры.
     * ▶️ Для создания процедуры `dorepeat_v2`, выделен полный код, заканчивающийся на `END`, и выполнена команда для её создания (команда на удаление для `dorepeat_v2` не потребовалась, так как данная процедура до этого не существовала).
@@ -72,7 +72,7 @@
 ```bash
    mv ~/Downloads/mysql-connector-j-8.4.0.jar /Applications/apache-jmeter-5.6.3/lib
 ```
-  * Скачанный файл [`wp_db_test.jmx`](wp_db_test.jmx) был перемещен в директорию для хранения тестов производительности и запущен с помощью JMeter для проведения нагрузочного тестирования базы данных:
+  * Скачанный файл [`wp_db_test.jmx`](jmeter-tests/wp_db_test.jmx) был перемещен в директорию для хранения тестов производительности и запущен с помощью JMeter для проведения нагрузочного тестирования базы данных:
 ```bash
    # Созданы папки для хранения проекта:
    mkdir -p ~/Documents/Performance_testingQA79/Database_load_testing/jmeter-tests
@@ -102,8 +102,8 @@
   * Были сделаны [скриншоты](dorepeat-report) в качестве доказательства того, что процедура `v2` работает медленнее, чем процедура `v1`.
     
 <p align="center">
-<img width="45%" src="dorepeat-report/v1_Response_Times_Over_Time.png"/>
-<img width="44.4%"src="dorepeat-report/v2_Response_Times_Over_Time.png"/>
+<img width="43.5%" src="dorepeat-report/v1_Response_Times_Over_Time.png"/>
+<img width="54%"src="dorepeat-report/v2_Response_Times_Over_Time.png"/>
 </p>
 
 
@@ -134,4 +134,3 @@
 ### Дополнительная информация
 - [build-db-test-plan](https://jmeter.apache.org/usermanual/build-db-test-plan.html) — инструкция создания теста DB с нуля.
 - [mysql-db-driver](https://dev.mysql.com/downloads/connector/j/) — драйвер с официального сайта для установка в JMeter/Lib.
-

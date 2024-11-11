@@ -53,7 +53,7 @@
           <stringProp name="resultSetHandler">Store as String</stringProp>
         </JDBCSampler>
         <hashTree/>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="insert 5 rows">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="insert 5 rows" enabled="true">
           <stringProp name="dataSource">wpdb_1</stringProp>
           <stringProp name="queryType">Callable Statement</stringProp>
           <stringProp name="query">CALL dorepeat_v1(5);</stringProp>
@@ -78,7 +78,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="true">
           <stringProp name="dataSource">wpdb_1</stringProp>
           <stringProp name="queryType">Select Statement</stringProp>
           <stringProp name="query">SELECT * from wp_comments
@@ -95,7 +95,7 @@ order by comment_ID desc;</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="writers">
         <intProp name="ThreadGroup.num_threads">100</intProp>
-        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">600</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
@@ -104,7 +104,7 @@ order by comment_ID desc;</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="v1">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="v1" enabled="false">
           <stringProp name="dataSource">wpdb_1</stringProp>
           <stringProp name="queryType">Callable Statement</stringProp>
           <stringProp name="query">call dorepeat_v1(1);</stringProp>
@@ -117,10 +117,10 @@ order by comment_ID desc;</stringProp>
           <stringProp name="resultSetHandler">Store as String</stringProp>
         </JDBCSampler>
         <hashTree/>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="v2" enabled="false">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="v2">
           <stringProp name="dataSource">wpdb_1</stringProp>
           <stringProp name="queryType">Callable Statement</stringProp>
-          <stringProp name="query">CALL dorepeat_v2(3, &apos;${__RandomString(10,abcdefg)}&apos;);</stringProp>
+          <stringProp name="query">CALL dorepeat_v2(1, &apos;${__RandomString(10,abcdefg)}&apos;);</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="variableNames"></stringProp>
